@@ -22,5 +22,6 @@ jobs:
       - name: make dataset
         run: |
           for file in $(git diff ${{github.event.before}}..${{github.event.after}} --name-only --diff-filter=A -- 'mk_dataset.sh') ; do
+            echo $file
             sh $file
           done
