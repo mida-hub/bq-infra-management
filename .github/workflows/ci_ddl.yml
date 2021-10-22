@@ -1,0 +1,26 @@
+name: Continuous Integration
+on:
+  push:
+    branches: 
+      - main
+    paths:
+      - "ddl/**"
+
+jobs:
+  make_dataset:
+    name: BQ Make Dataset
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2.0.0
+      - name: Set up Cloud SDK
+        uses: google-github-actions/setup-gcloud@master
+        with:
+          project_id: ${{ secrets.gcp_project_id }}
+          service_account_key: ${{ secrets.gcp_sa_key }}
+          export_default_credentials: true
+      - name: make dataset
+        run: |
+          for file in $(git diff ${{github.event.before}}..${{github.event.after}} --name-only --diff-filter=A -- 'mk_dataset.sh') ; do
+            sh $file
+          done
