@@ -28,9 +28,9 @@ jobs:
           FILES: |
             make_dataset.sh
       - name: echo
-        if: contains(env.GIT_DIFF, 'make_dataset.sh')
+        if: contains(env.MATCHED_FILES, 'make_dataset.sh')
         run: |
-          echo ${{ env.GIT_DIFF }}
+          echo ${{ env.MATCHED_FILES }}
           
       # - name: make dataset
       #   run: |
