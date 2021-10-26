@@ -4,7 +4,7 @@ on:
     branches:
       - main
     paths:
-      - "ddl/**"
+      - ddl/**
   workflow_dispatch:
 
 env:
@@ -25,9 +25,11 @@ jobs:
           project_id: ${{ secrets.gcp_project_id }}
           service_account_key: ${{ secrets.gcp_sa_key }}
           export_default_credentials: true
-      - name: Get Diff
+      - name: Get Diff DDL
         uses: technote-space/get-diff-action@v5
         with:
+          PATTERNS: |
+            ddl/**
           FILES: |
             ${{ env.MAKE_DATASET_SH }}
       - name: make dataset
