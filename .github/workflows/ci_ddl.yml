@@ -1,10 +1,10 @@
 name: Continuous Integration
 on:
   push:
-    # branches: 
-    #   - main
-    # paths:
-    #   - "ddl/**"
+    branches:
+      - main
+    paths:
+      - "ddl/**"
   workflow_dispatch:
 
 jobs:
@@ -27,14 +27,10 @@ jobs:
         with:
           FILES: |
             make_dataset.sh
-      - name: echo
+      - name: make dataset
         if: contains(env.MATCHED_FILES, 'make_dataset.sh')
         run: |
-          echo ${{ env.MATCHED_FILES }}
-          
-      # - name: make dataset
-      #   run: |
-      #     for file in $(git diff origin/main..HEAD --name-only -- '*make_dataset\.sh') ; do
-      #       echo $file
-      #       sh $file
-      #     done
+          for file in ${{ env.MATCHED_FILES }} ; do
+            echo $file
+            sh $file
+          done
