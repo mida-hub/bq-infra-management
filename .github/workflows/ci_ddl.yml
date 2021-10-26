@@ -24,8 +24,11 @@ jobs:
         run: |
           echo ${{github.event.before}}
           echo ${{github.event.after}}
-          git log ${{github.event.before}} --oneline
-          git log ${{github.event.after}} --oneline
+      - name: git
+        run: |
+          git log --oneline
+          git log "${{github.event.before}}" --oneline
+          git log "${{github.event.after}}" --oneline
       - name: make dataset
         run: |
           for file in $(git diff ${{github.event.before}}..${{github.event.after}} --name-only '*mk_dataset\.sh') ; do
