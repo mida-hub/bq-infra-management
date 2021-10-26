@@ -20,12 +20,8 @@ jobs:
       #     project_id: ${{ secrets.gcp_project_id }}
       #     service_account_key: ${{ secrets.gcp_sa_key }}
       #     export_default_credentials: true
-      - name: echo
-        run: |
-          echo ${{github.event.before}}
-          echo ${{github.event.after}}
       - name: make dataset
         run: |
-          for file in $(git diff ${{github.event.before}}..${{github.event.after}} --name-only '*mk_dataset\.sh') ; do
+          for file in $(git diff origin/main..HEAD --name-only -- '*make_dataset\.sh') ; do
             echo $file
           done
