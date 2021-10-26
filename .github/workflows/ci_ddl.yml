@@ -7,6 +7,9 @@ on:
       - "ddl/**"
   workflow_dispatch:
 
+env:
+  TARGET_SH_NAME: make_dataset.sh
+
 jobs:
   make_dataset:
     name: BQ Make Dataset
@@ -26,9 +29,9 @@ jobs:
         uses: technote-space/get-diff-action@v5
         with:
           FILES: |
-            make_dataset.sh
+            env.TARGET_SH_NAME
       - name: make dataset
-        if: contains(env.MATCHED_FILES, 'make_dataset.sh')
+        if: contains(env.MATCHED_FILES, env.TARGET_SH_NAME)
         run: |
           for file in ${{ env.MATCHED_FILES }} ; do
             echo $file
