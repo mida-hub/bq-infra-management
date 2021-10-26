@@ -36,3 +36,7 @@ DataLakeには、Cloud SQLからFederationでBigQueryにデータを持ってく
     - table_id.sql
 
 ## setup
+
+## 参考
+- CIでデータマートを自動生成する : https://tech.hey.jp/entry/2021/04/30/174918
+- GithubActionsで新しく追加されたファイル名を取得する : https://zenn.dev/renamoo/articles/152d49b991f993e24ee0

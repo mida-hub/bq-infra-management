@@ -30,12 +30,16 @@ jobs:
       - name: pwd
         run: |
           pwd
-      - name: bq ls
-        run: |
-          bq ls
-      - name: git branch
-        run: |
-          git branch
+      # - name: bq ls
+      #   run: |
+      #     bq ls
+      # - name: git branch
+      #   run: |
+      #     git branch
       - name: git log
         run: |
           git log --oneline
+      - name: echo
+        run: |
+          echo ${{github.event.before}}
+          echo ${{github.event.after}}
