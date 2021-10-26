@@ -32,7 +32,7 @@ jobs:
             ddl/**
           FILES: |
             ${{ env.MAKE_DATASET_SH }}
-      - name: make dataset
+      - name: Make Dataset
         if: contains(${{ env.MATCHED_FILES }}, ${{ env.MAKE_DATASET_SH }})
         run: |
           for file in ${{ env.MATCHED_FILES }} ; do
