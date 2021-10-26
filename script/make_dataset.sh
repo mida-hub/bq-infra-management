@@ -1,7 +1,8 @@
 #!/bin/sh
 
-file_name=$0
-tmp_dir=`echo ${file_name%/*}`
-dataset_id=`echo ${tmp_dir##*/}`
+tmp_dir=`dirname $0`
+dataset_id=`basename ${tmp_dir}`
 
-bq mk --force --dataset ${dataset_id}
+command=`echo "bq mk --force --dataset ${dataset_id}"`
+echo ${command}
+$(echo ${command})

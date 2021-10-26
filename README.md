@@ -39,4 +39,4 @@ DataLakeには、Cloud SQLからFederationでBigQueryにデータを持ってく
 
 ## 参考
 - CIでデータマートを自動生成する : https://tech.hey.jp/entry/2021/04/30/174918
-- GithubActionsで新しく追加されたファイル名を取得する : https://zenn.dev/renamoo/articles/152d49b991f993e24ee0
+- [GitHub Actions]ファイルの差分や更新状態を元にStepの実施を切り分けてみる : https://dev.classmethod.jp/articles/switch-step-by-file-conditions/
