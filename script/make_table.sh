@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 function yaml_to_json() {
     ruby -rjson -ryaml -e 'print YAML.load(STDIN.read).to_json'

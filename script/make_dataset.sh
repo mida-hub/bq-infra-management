@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 tmp_dir=`dirname $0`
 dataset_id=`basename ${tmp_dir}`

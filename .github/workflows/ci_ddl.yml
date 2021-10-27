@@ -39,7 +39,7 @@ jobs:
         run: |
           for file in ${{ env.MATCHED_FILES }} ; do
             echo $file
-            sh $file
+            bash $file
           done
 
       - name: Get Diff Table
@@ -54,5 +54,5 @@ jobs:
         run: |
           for file in ${{ env.MATCHED_FILES }} ; do
             echo $file
-            sh script/make_table.sh $file
+            bash script/make_table.sh $file
           done

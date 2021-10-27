@@ -1,4 +1,4 @@
-version: 1
+version: 2
 type: TABLE
 time_partitioning_type:
 time_partitioning_field:
