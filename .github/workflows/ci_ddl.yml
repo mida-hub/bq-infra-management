@@ -8,8 +8,8 @@ on:
   workflow_dispatch:
 
 env:
-  MAKE_DATASET_KEY: make_dataset.sh
-  MAKE_TABLE_KEY: config.yml
+  MAKE_DATASET_KEY: dataset_config.yml
+  MAKE_TABLE_KEY: table_config.yml
 
 jobs:
   make_dataset:
@@ -39,7 +39,7 @@ jobs:
         run: |
           for file in ${{ env.MATCHED_FILES }} ; do
             echo $file
-            bash $file
+            bash script/make_dataset.sh $file
           done
 
       - name: Get Diff Table
