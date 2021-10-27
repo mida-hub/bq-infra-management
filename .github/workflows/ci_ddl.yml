@@ -12,8 +12,8 @@ env:
   MAKE_TABLE_KEY: table_config.yml
 
 jobs:
-  make_dataset:
-    name: BQ Make Dataset
+  make_data:
+    name: BQ Make Dataset / Make Table
     runs-on: ubuntu-latest
     steps:
       - name: Checkout

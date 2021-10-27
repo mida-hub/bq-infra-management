@@ -19,6 +19,12 @@ table_type=`yaml_to_json < $1 | jq -r .type`
 time_partitioning_type=`yaml_to_json < $1 | jq -r .time_partitioning_type`
 time_partitioning_field=`yaml_to_json < $1 | jq -r .time_partitioning_field`
 
+# check exists
+if [ ! -e ${schema_json} ]; then
+    echo "${schema_json} is not found"
+    exit 1
+fi
+
 # bq command 作成
 if [ "_${table_type}" = "_TABLE" ]; then
     command=`echo "bq mk --force ${dataset_id}.${table_id}"`
