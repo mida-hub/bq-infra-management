@@ -10,27 +10,30 @@ BigQueryを分析基盤として開発運用するときに、なるべく少な
 DataLakeには、Cloud SQLからFederationでBigQueryにデータを持ってくる、AWS S3からTransfer ServiceでBigQueryにデータを持ってくるなどを想定している。つまりこのリポジトリではデータ連携のための処理を書かない前提とする。
 
 ## 何ができるか
-- Workflow
-  - github actionsを利用して無料の範囲内でDaily Workflowを動かす
-  - push時は差分のSQLのみ処理を実行する
-  - 手動でWorkflowを動かしたいときがあるのでEndpointを叩くと手動実行できる
+- 共通
+  - push時に差分のファイルを検知して処理を実行する
+  - 手動実行ができる
   - 失敗時にSlackに通知する
+- Workflow
+  - 依存関係をもとにSQLを実行する
 - DDL
-  - mergeのタイミングでCreate Dataset / Tableを発行する
+  - Create Dataset / Create Tableを発行する
   - Datasetにpermissionを適用する
 
 ## 制限
 - Workflowの途中から動かし直すが難しいので、リランは頭から再実行となる
 
-## directory structure
+## ディレクトリ構造
 - .github
   - workflows
-    - continuous_delivery.yml
+    - ci.yml
     - bq_workflow.yml
 - ddl
   - dataset_id
-    - create_table_id.sql
     - permission.yml
+    - table_id
+      - config.yml
+      - schema.json
 - etl
   - dataset_id
     - table_id.sql
@@ -40,3 +43,5 @@ DataLakeには、Cloud SQLからFederationでBigQueryにデータを持ってく
 ## 参考
 - CIでデータマートを自動生成する : https://tech.hey.jp/entry/2021/04/30/174918
 - [GitHub Actions]ファイルの差分や更新状態を元にStepの実施を切り分けてみる : https://dev.classmethod.jp/articles/switch-step-by-file-conditions/
+- BigQueryで一般公開データセット(気象データ)を使用してみよう : https://techblog.gmo-ap.jp/2020/05/12/weatherbigdata/
+- [小ネタ] シェルスクリプト内で YAML -> JSON 変換する #ruby : https://dev.classmethod.jp/articles/201904_yaml-to-json-converter-on-shellscript/

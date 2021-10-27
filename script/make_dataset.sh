@@ -18,6 +18,6 @@ command=`echo "bq mk --force --dataset ${dataset_id}"`
 echo ${command}
 $(echo ${command})
 
-command=`echo "bq update ${dataset_id} ${access_json}"`
+command=`echo "bq update --source ${access_json} ${dataset_id}"`
 echo ${command}
 $(echo ${command})
