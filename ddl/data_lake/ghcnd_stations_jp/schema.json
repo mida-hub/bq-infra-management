@@ -1,0 +1,47 @@
+[
+  {
+    "name": "Id",
+    "type": "STRING",
+    "description": "観測地点の番号"
+  },
+  {
+    "name": "latitude",
+    "type": "FLOAT",
+    "description": "緯度"
+  },
+  {
+    "name": "longitude",
+    "type": "FLOAT",
+    "description": "経度"
+  },
+  {
+    "name": "elevation",
+    "type": "FLOAT",
+    "description": "標高"
+  },
+  {
+    "name": "state",
+    "type": "STRING",
+    "description": "アメリカの郵便番号データ アメリカ用データ)"
+  },
+  {
+    "name": "name",
+    "type": "STRING",
+    "description": "地名"
+  },
+  {
+    "name": "gsn_flag",
+    "type": "STRING",
+    "description": "GCOS Surface Network（GSN）フラグ。GSNの観測地点の場合は「GSN」"
+  },
+  {
+    "name": "hcn_crn_flag",
+    "type": "STRING",
+    "description": "U.S. Historical Climatology Network stationHCNの観測地点の場合は「HCN」、U.S. Climate Reference Network or U.S. Regionalの観測地点の場合は「CRN」 (アメリカ用フラグ)"
+  },
+  {
+    "name": "wmoid",
+    "type": "INTEGER",
+    "description": "国際地点番号"
+  }
+]

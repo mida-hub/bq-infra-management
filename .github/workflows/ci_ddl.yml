@@ -8,7 +8,8 @@ on:
   workflow_dispatch:
 
 env:
-  MAKE_DATASET_SH: make_dataset.sh
+  MAKE_DATASET_KEY: make_dataset.sh
+  MAKE_TABLE_KEY: config.yml
 
 jobs:
   make_dataset:
@@ -25,17 +26,33 @@ jobs:
           project_id: ${{ secrets.gcp_project_id }}
           service_account_key: ${{ secrets.gcp_sa_key }}
           export_default_credentials: true
-      - name: Get Diff DDL
+
+      - name: Get Diff Dataset
         uses: technote-space/get-diff-action@v5
         with:
           PATTERNS: |
             ddl/**
           FILES: |
-            ${{ env.MAKE_DATASET_SH }}
+            ${{ env.MAKE_DATASET_KEY }}
       - name: Make Dataset
-        if: contains(${{ env.MATCHED_FILES }}, ${{ env.MAKE_DATASET_SH }})
+        if: contains(${{ env.MATCHED_FILES }}, ${{ env.MAKE_DATASET_KEY }})
         run: |
           for file in ${{ env.MATCHED_FILES }} ; do
             echo $file
             sh $file
+          done
+
+      - name: Get Diff Table
+        uses: technote-space/get-diff-action@v5
+        with:
+          PATTERNS: |
+            ddl/**
+          FILES: |
+            ${{ env.MAKE_TABLE_KEY }}
+      - name: Make Table
+        if: contains(${{ env.MATCHED_FILES }}, ${{ env.MAKE_TABLE_KEY }})
+        run: |
+          for file in ${{ env.MATCHED_FILES }} ; do
+            echo $file
+            sh script/make_table.sh $file
           done
