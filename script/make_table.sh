@@ -45,8 +45,8 @@ case ${table_type} in
         # table_view.sql の存在チェック
         is_not_file_exist ${table_view_sql}
 
-        # echo を使うと変数にSQL文が格納され、結果として Too many positional args というエラーになる
-        command='bq mk --force --use_legacy_sql=false --view " `cat ${table_view_sql}` " ${dataset_id}.${table_id}'
+        # echo を使って変数にSQL文を格納すると、結果として Too many positional args というエラーになる
+        command='bq mk --force --use_legacy_sql=false --view " `cat ${table_view_sql}` " '${dataset_id}.${table_id}
         ;;
     *)
         echo "table_type is not TABLE or VIEW"
