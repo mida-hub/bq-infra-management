@@ -18,9 +18,7 @@ is_not_file_exist ${dataset_access_json}
 
 # bq command 作成
 command=`echo "bq mk --force --dataset ${dataset_id}"`
-echo ${command}
-eval ${command}
+run_command "${command}"
 
 command=`echo "bq update --source ${dataset_access_json} ${dataset_id}"`
-echo ${command}
-eval ${command}
+run_command "${command}"

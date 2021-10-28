@@ -10,3 +10,8 @@ function is_not_file_exist() {
         exit 1
     fi
 }
+
+function run_command(){
+    echo $1
+    eval $1
+}

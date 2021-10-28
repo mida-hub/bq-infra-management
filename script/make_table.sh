@@ -30,7 +30,7 @@ is_not_file_exist ${table_schema_json}
 # bq command 作成
 case ${table_type} in
     TABLE)
-        command=`echo "bq mk --force ${dataset_id}.${table_id}"`
+        command=`echo bq mk --force --table --schema ${table_schema_json}`
 
         if [ ! "_${time_partitioning_type}" = "_null" ]; then
             command=`echo ${command} --time_partitioning_type ${time_partitioning_type}`
@@ -40,6 +40,9 @@ case ${table_type} in
             command=`echo ${command} --time_partitioning_field ${time_partitioning_field}`
         fi
 
+        command=`echo ${command} ${dataset_id}.${table_id}`
+        run_command "${command}"
+
         ;;
     VIEW)
         # table_view.sql の存在チェック
@@ -47,16 +50,13 @@ case ${table_type} in
 
         # echo を使って変数にSQL文を格納すると、結果として Too many positional args というエラーになる
         command='bq mk --force --use_legacy_sql=false --view " `cat ${table_view_sql}` " '${dataset_id}.${table_id}
+        run_command "${command}"
+
+        command=`echo "bq update ${dataset_id}.${table_id} ${table_schema_json}"`
+        run_command "${command}"
         ;;
     *)
         echo "table_type is not TABLE or VIEW"
         exit 1
         ;;
 esac
-
-echo ${command}
-eval ${command}
-
-command=`echo "bq update ${dataset_id}.${table_id} ${table_schema_json}"`
-echo ${command}
-eval ${command}
