@@ -26,19 +26,24 @@ DataLakeには、Cloud SQLからFederationでBigQueryにデータを持ってく
 ## ディレクトリ構造
 - .github
   - workflows
-    - ci.yml
-    - bq_workflow.yml
+    - ci_ddl.yml
+    - bq_etl.yml
 - ddl
   - dataset_id
-    - permission.yml
+    - dataset_config.yml
+    - dataset_access.json
     - table_id
-      - config.yml
-      - schema.json
+      - table_config.yml
+      - table_schema.json
+      - create_view.sql
 - etl
   - dataset_id
     - table_id.sql
 
-## setup
+## 残タスク
+- view
+- error
+- etl
 
 ## 参考
 - CIでデータマートを自動生成する : https://tech.hey.jp/entry/2021/04/30/174918
