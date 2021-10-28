@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# utilファイル読み込み
+. $(dirname $0)/util.sh
+
 # debug
 echo $1
 
@@ -11,16 +14,13 @@ dataset_id=`basename ${tmp_dir}`
 dataset_access_json=`echo "$(dirname $1)/dataset_access.json"`
 
 # check exists
-if [ ! -e ${dataset_access_json} ]; then
-    echo "${dataset_access_json} is not found"
-    exit 1
-fi
+is_not_file_exist ${dataset_access_json}
 
 # bq command 作成
 command=`echo "bq mk --force --dataset ${dataset_id}"`
 echo ${command}
-$(echo ${command})
+eval ${command}
 
 command=`echo "bq update --source ${dataset_access_json} ${dataset_id}"`
 echo ${command}
-$(echo ${command})
+eval ${command}
