@@ -13,7 +13,7 @@ env:
 
 jobs:
   ci:
-    name: BQ Make Dataset / Make Table
+    name: BQ Make Dataset / Table
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -44,7 +44,7 @@ jobs:
         with:
           FILES: |
             ${{ env.MAKE_TABLE_KEY }}
-      - name: Make Table
+      - name: Make Table / View
         if: contains(${{ env.MATCHED_FILES }}, ${{ env.MAKE_TABLE_KEY }})
         run: |
           for file in ${{ env.MATCHED_FILES }} ; do
