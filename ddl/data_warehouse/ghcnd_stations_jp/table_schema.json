@@ -1,0 +1,27 @@
+[
+  {
+    "name": "Id",
+    "type": "STRING",
+    "description": "観測地点の番号"
+  },
+  {
+    "name": "wmoid",
+    "type": "INTEGER",
+    "description": "国際地点番号"
+  },
+  {
+    "name": "latitude",
+    "type": "FLOAT",
+    "description": "緯度"
+  },
+  {
+    "name": "longitude",
+    "type": "FLOAT",
+    "description": "経度"
+  },
+  {
+    "name": "name",
+    "type": "STRING",
+    "description": "地名"
+  }
+]

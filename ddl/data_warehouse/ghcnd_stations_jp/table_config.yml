@@ -1,0 +1,4 @@
+version: 1
+type: VIEW
+time_partitioning_type:
+time_partitioning_field:
