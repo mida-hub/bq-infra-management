@@ -1,0 +1,50 @@
+[
+  {
+    "mode": "NULLABLE",
+    "name": "id",
+    "type": "STRING",
+    "description": "観測地点の番号"
+  },
+  {
+    "mode": "NULLABLE",
+    "name": "date",
+    "type": "DATE",
+    "description": "日付"
+  },
+  {
+    "mode": "NULLABLE",
+    "name": "element",
+    "type": "STRING",
+    "description": "気象観測データの種類 例 PRCP:降水量(1/10ミリ) SNOW:降雪(mm) SNWD:雪の深さ(mm) TMAX:最高温度(1/10度C) TMIN:最低気温(1/10度C)"
+  },
+  {
+    "mode": "NULLABLE",
+    "name": "value",
+    "type": "FLOAT",
+    "description": "気象観測データ"
+  },
+  {
+    "mode": "NULLABLE",
+    "name": "mflag",
+    "type": "STRING",
+    "description": "気象観測データの測定方法のフラグ 例 空白:普通の測定 B:2つの12時間合計から形成される降水量合計 D:4つの6時間の合計から形成される降水量の合計"
+  },
+  {
+    "mode": "NULLABLE",
+    "name": "qflag",
+    "type": "STRING",
+    "description": "気象観測データの品質フラグ 例 空白:品質保証チェックに失敗しなかった I:内部整合性チェックに失敗"
+  },
+  {
+    "mode": "NULLABLE",
+    "name": "sflag",
+    "type": "STRING",
+    "description": "気象観測データのソースフラグ 例 U:Remote Automatic Weather Stations (RAWS)のデータ、S:Global Summary of the Day (NCDC DSI-9618)のデータ"
+  },
+  {
+    "mode": "NULLABLE",
+    "name": "time",
+    "type": "STRING",
+    "description": "hhmm形式の時刻"
+  }
+]
