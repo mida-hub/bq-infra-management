@@ -1,15 +1,18 @@
 #!/bin/bash
 
+# debug
+echo $1
+
 # dataset_id 解析
 tmp_dir=`dirname $1`
 dataset_id=`basename ${tmp_dir}`
 
 # dataset_access.json のパス設定
-access_json=`echo "$(dirname $1)/dataset_access.json"`
+dataset_access_json=`echo "$(dirname $1)/dataset_access.json"`
 
 # check exists
-if [ ! -e ${access_json} ]; then
-    echo "${access_json} is not found"
+if [ ! -e ${dataset_access_json} ]; then
+    echo "${dataset_access_json} is not found"
     exit 1
 fi
 
@@ -18,6 +21,6 @@ command=`echo "bq mk --force --dataset ${dataset_id}"`
 echo ${command}
 $(echo ${command})
 
-command=`echo "bq update --source ${access_json} ${dataset_id}"`
+command=`echo "bq update --source ${dataset_access_json} ${dataset_id}"`
 echo ${command}
 $(echo ${command})

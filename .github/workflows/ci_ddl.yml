@@ -12,7 +12,7 @@ env:
   MAKE_TABLE_KEY: table_config.yml
 
 jobs:
-  make_data:
+  ci:
     name: BQ Make Dataset / Make Table
     runs-on: ubuntu-latest
     steps:
@@ -23,36 +23,30 @@ jobs:
       - name: Set up Cloud SDK
         uses: google-github-actions/setup-gcloud@master
         with:
-          project_id: ${{ secrets.gcp_project_id }}
-          service_account_key: ${{ secrets.gcp_sa_key }}
+          project_id: ${{ secrets.GCP_PROJECT_ID }}
+          service_account_key: ${{ secrets.GCP_SA_KEY }}
           export_default_credentials: true
 
       - name: Get Diff Dataset
         uses: technote-space/get-diff-action@v5
         with:
-          PATTERNS: |
-            ddl/**
           FILES: |
             ${{ env.MAKE_DATASET_KEY }}
       - name: Make Dataset
         if: contains(${{ env.MATCHED_FILES }}, ${{ env.MAKE_DATASET_KEY }})
         run: |
           for file in ${{ env.MATCHED_FILES }} ; do
-            echo $file
             bash script/make_dataset.sh $file
           done
 
       - name: Get Diff Table
         uses: technote-space/get-diff-action@v5
         with:
-          PATTERNS: |
-            ddl/**
           FILES: |
             ${{ env.MAKE_TABLE_KEY }}
       - name: Make Table
         if: contains(${{ env.MATCHED_FILES }}, ${{ env.MAKE_TABLE_KEY }})
         run: |
           for file in ${{ env.MATCHED_FILES }} ; do
-            echo $file
             bash script/make_table.sh $file
           done
