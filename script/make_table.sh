@@ -52,7 +52,8 @@ case ${table_type} in
         command='bq mk --force --use_legacy_sql=false --view " `cat ${table_view_sql}` " '${dataset_id}.${table_id}
         run_command "${command}"
 
-        command=`echo "bq update ${dataset_id}.${table_id} ${table_schema_json}"`
+        # View に Descriptionをセットする
+        command=`echo bq update ${dataset_id}.${table_id} ${table_schema_json}`
         run_command "${command}"
         ;;
     *)
