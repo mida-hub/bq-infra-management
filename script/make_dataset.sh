@@ -23,5 +23,10 @@ file_not_exists_then_error ${dataset_access_json}
 command=`echo "bq mk --force --dataset ${dataset_id}"`
 run_command "${command}"
 
-command=`echo "bq update --description ${dataset_description} --source ${dataset_access_json} ${dataset_id}"`
+# description セット
+command=`echo "bq update --description '${dataset_description}'"`
+run_command "${command}"
+
+# access 権限セット
+command=`echo "bq update --source ${dataset_access_json} ${dataset_id}"`
 run_command "${command}"

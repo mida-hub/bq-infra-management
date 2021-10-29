@@ -1,4 +1,4 @@
-version: 2
+version: 1
 description: 日本の気象データ
 type: TABLE
 time_partitioning_type: DAY
