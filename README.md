@@ -40,6 +40,7 @@ DataLakeには、Cloud SQLからFederationでBigQueryにデータを持ってく
 - script
 
 ## 残タスク
+- daily
 - error
 
 ## 参考
@@ -47,3 +48,4 @@ DataLakeには、Cloud SQLからFederationでBigQueryにデータを持ってく
 - [GitHub Actions]ファイルの差分や更新状態を元にStepの実施を切り分けてみる : https://dev.classmethod.jp/articles/switch-step-by-file-conditions/
 - BigQueryで一般公開データセット(気象データ)を使用してみよう : https://techblog.gmo-ap.jp/2020/05/12/weatherbigdata/
 - [小ネタ] シェルスクリプト内で YAML -> JSON 変換する #ruby : https://dev.classmethod.jp/articles/201904_yaml-to-json-converter-on-shellscript/
+- sed でエスケープ処理をしないでURLの置換を行う : https://hacknote.jp/archives/8163/

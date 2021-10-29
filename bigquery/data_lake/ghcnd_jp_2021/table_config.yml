@@ -1,4 +1,5 @@
 version: 2
+description: 日本の気象データ 2021
 type: TABLE
 time_partitioning_type: DAY
 time_partitioning_field: date
