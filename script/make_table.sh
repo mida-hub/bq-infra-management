@@ -31,7 +31,7 @@ file_not_exists_then_error ${table_schema_json}
 # bq command 作成
 case ${table_type} in
     TABLE)
-        command=`echo bq mk --force --table --description '${table_description}' --schema ${table_schema_json}`
+        command=`echo bq mk --force --table --description \"${table_description}\" --schema ${table_schema_json}`
 
         if [ ! "_${time_partitioning_type}" = "_null" ]; then
             command=`echo ${command} --time_partitioning_type ${time_partitioning_type}`
@@ -43,7 +43,6 @@ case ${table_type} in
 
         command=`echo ${command} ${dataset_id}.${table_id}`
         run_command "${command}"
-
         ;;
     VIEW)
         # table_view.sql の存在チェック
