@@ -1,10 +1,10 @@
-name: Continuous Integration DDL
+name: Continuous Integration
 on:
   push:
     branches:
       - main
     paths:
-      - ddl/**
+      - bigquery/**
 
 env:
   MAKE_DATASET_KEY: dataset_config.yml
