@@ -5,7 +5,7 @@
 
 # debug
 echo $1
-mode=$2
+wf_type=$2
 
 # table_query.sql のパス設定
 table_query_sql=`echo "$(dirname $1)/table_query.sql"`
@@ -17,7 +17,7 @@ file_not_exists_then_exit ${table_query_sql}
 
 # CI時はSQL文の{append_where}文字列を除去
 append_where=""
-if [ ! "_${mode}" = "_CI" -a -e ${table_query_where} ]; then
+if [ ! "_${wf_type}" = "_CI" -a -e ${table_query_where} ]; then
    # 追加のWHERE条件句内の改行コードをスペースに置換
    append_where=`cat ${table_query_where} | tr '\n' ' ' `
 fi
