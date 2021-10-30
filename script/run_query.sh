@@ -25,6 +25,6 @@ fi
 # SQL内の{append_where}文字列を置換
 tmp_sql="tmp.sql"
 cat ${table_query_sql} | sed -e "s|{append_where}|${append_where}|g" > ${tmp_sql}
-
+cat ${tmp_sql}
 command='bq query --use_legacy_sql=false " `cat ${tmp_sql}` "'
 run_command "${command}"
