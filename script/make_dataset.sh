@@ -19,7 +19,7 @@ dataset_description=`yaml_to_json < $1 | jq -r .description`
 # check exists
 file_not_exists_then_error ${dataset_access_json}
 
-command=`echo "bq ls | grep -o '[[:<:]]${dataset_id}[[:>:]]'"`
+command=`echo "bq ls | grep -o '[[:blank:]]${dataset_id}[[:blank:]]'"`
 echo ${command}
 dataset_exists=`eval ${command}`
 
