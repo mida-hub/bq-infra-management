@@ -28,17 +28,25 @@ time_partitioning_field=`yaml_to_json < $1 | jq -r .time_partitioning_field`
 # table_schema.json の存在チェック
 file_not_exists_then_error ${table_schema_json}
 
-# bq command 作成
+# Table / View 作成
 case ${table_type} in
     TABLE)
-        command=`echo bq mk --force --table --description \"${table_description}\" --schema ${table_schema_json}`
+        table_exists=`eval "bq ls ${dataset_id} | grep -o '[[:<:]]${table_id}[[:>:]]'"`
 
-        if [ ! "_${time_partitioning_type}" = "_null" ]; then
-            command=`echo ${command} --time_partitioning_type ${time_partitioning_type}`
-        fi
+        # table が存在しなければ作成する
+        if [ "_${table_exists}" = "_" ]; then
+            command=`echo bq mk --table --description \"${table_description}\" --schema ${table_schema_json}`
 
-        if [ ! "_${time_partitioning_field}" = "_null" ]; then
-            command=`echo ${command} --time_partitioning_field ${time_partitioning_field}`
+            if [ ! "_${time_partitioning_type}" = "_null" ]; then
+                command=`echo ${command} --time_partitioning_type ${time_partitioning_type}`
+            fi
+
+            if [ ! "_${time_partitioning_field}" = "_null" ]; then
+                command=`echo ${command} --time_partitioning_field ${time_partitioning_field}`
+            fi
+        # table が存在する場合は更新する
+        else
+            command=`echo bq update --table --description \"${table_description}\" --schema ${table_schema_json}`
         fi
 
         command=`echo ${command} ${dataset_id}.${table_id}`

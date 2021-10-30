@@ -18,13 +18,17 @@ dataset_description=`yaml_to_json < $1 | jq -r .description`
 
 # check exists
 file_not_exists_then_error ${dataset_access_json}
+dataset_exists=`eval "bq ls | grep -o '[[:<:]]${dataset_id}[[:>:]]'"`
 
-# bq command 作成
-command=`echo "bq mk --force --dataset ${dataset_id}"`
-run_command "${command}"
+# dataset が存在しなければ作成する
+if [ "_${dataset_exists}" = "_" ]; then
+    # dataset 作成
+    command=`echo "bq mk --dataset ${dataset_id}"`
+    run_command "${command}"
+fi
 
 # description セット
-command=`echo "bq update --description '${dataset_description}'"`
+command=`echo "bq update --description '${dataset_description}' ${dataset_id}"`
 run_command "${command}"
 
 # access 権限セット
