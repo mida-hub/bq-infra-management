@@ -9,19 +9,26 @@ BigQueryを分析基盤として開発運用するときに、なるべく少な
 ## 前提
 DataLakeには、Cloud SQLからFederationでBigQueryにデータを持ってくる、AWS S3からTransfer ServiceでBigQueryにデータを持ってくるなどを想定している。つまりこのリポジトリではデータ連携のための処理を書かない前提とする。
 
+## Workflow
+- Schedule : ワークフローエンジンとしての機能
+- CI : 定義変更時のCIとしての機能
+
 ## 何ができるか
 - 共通
   - push時に差分のファイルを検知して処理を実行する
-  - 手動実行ができる
   - 失敗時にSlackに通知する
 - Schedule
+  - スケジュール実行ができる
+  - 手動実行ができる
   - 依存関係をもとにSQLを実行する
-- DDL
+- CI
   - Create Dataset / Create Tableを発行する
+  - Dataset / Table にDescriptionを付与する
   - Datasetにpermissionを適用する
+  - SQLを実行する
 
 ## 制限
-- Workflowの途中から動かし直すが難しいので、リランは頭から再実行となる
+- Schedule実行のWorkflowが途中でエラーになった場合、エラーの場所から再開するのは難しいので、リランは頭から再実行となる
 
 ## ディレクトリ構造
 - .github
@@ -42,8 +49,8 @@ DataLakeには、Cloud SQLからFederationでBigQueryにデータを持ってく
   - daily.yml
 - script
 
-## 残タスク
-- error
+## 使い方
+comming soon
 
 ## 参考
 - CIでデータマートを自動生成する : https://tech.hey.jp/entry/2021/04/30/174918
