@@ -1,7 +1,7 @@
 SELECT 
         Id
-    ,   wmoid
+    ,   name
     ,   latitude
     ,   longitude
-    ,   name
+    ,   elevation
 FROM data_lake.ghcnd_stations_jp

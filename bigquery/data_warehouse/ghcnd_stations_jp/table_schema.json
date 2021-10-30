@@ -5,9 +5,9 @@
     "description": "観測地点の番号"
   },
   {
-    "name": "wmoid",
-    "type": "INTEGER",
-    "description": "国際地点番号"
+    "name": "name",
+    "type": "STRING",
+    "description": "地名"
   },
   {
     "name": "latitude",
@@ -20,8 +20,8 @@
     "description": "経度"
   },
   {
-    "name": "name",
-    "type": "STRING",
-    "description": "地名"
+    "name": "elevation",
+    "type": "FLOAT",
+    "description": "標高"
   }
 ]

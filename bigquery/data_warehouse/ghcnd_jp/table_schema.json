@@ -18,6 +18,26 @@
     "description": "気象観測データの種類 例 PRCP:降水量(1/10ミリ) SNOW:降雪(mm) SNWD:雪の深さ(mm) TMAX:最高温度(1/10度C) TMIN:最低気温(1/10度C)"
   },
   {
+    "name": "name",
+    "type": "STRING",
+    "description": "地名"
+  },
+  {
+    "name": "latitude",
+    "type": "FLOAT",
+    "description": "緯度"
+  },
+  {
+    "name": "longitude",
+    "type": "FLOAT",
+    "description": "経度"
+  },
+  {
+    "name": "elevation",
+    "type": "FLOAT",
+    "description": "標高"
+  },
+  {
     "mode": "NULLABLE",
     "name": "value",
     "type": "FLOAT",
