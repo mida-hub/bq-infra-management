@@ -22,11 +22,11 @@ jobs:
 
       - name: Data Lake
         run: |
-          bash script/run_schedule.sh data_lake daily
+          bash script/run_schedule.sh data_lake DAILY
 
       - name: Data Warehouse
         run: |
-          bash script/run_schedule.sh data_warehouse daily
+          bash script/run_schedule.sh data_warehouse DAILY
 
       - name: Slack notification
         if: failure()

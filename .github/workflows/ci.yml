@@ -54,7 +54,7 @@ jobs:
         if: contains(${{ env.MATCHED_FILES }}, ${{ env.MAKE_TABLE_KEY }})
         run: |
           for file in ${{ env.MATCHED_FILES }} ; do
-            bash script/run_query.sh $file
+            bash script/run_query.sh $file "CI"
           done          
 
       - name: Slack notification
