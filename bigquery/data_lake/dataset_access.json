@@ -7,10 +7,6 @@
     {
       "role": "OWNER",
       "specialGroup": "projectOwners"
-    },
-    {
-      "role": "OWNER",
-      "userByEmail": "bq-github-actions@bq-practice-329807.iam.gserviceaccount.com"
     }
   ]
 }
