@@ -31,7 +31,9 @@ file_not_exists_then_error ${table_schema_json}
 # Table / View 作成
 case ${table_type} in
     TABLE)
-        table_exists=`eval "bq ls ${dataset_id} | grep -o '[[:<:]]${table_id}[[:>:]]'"`
+        command=`echo "bq ls ${dataset_id} | grep -o '[[:<:]]${table_id}[[:>:]]'"`
+        echo ${command}
+        table_exists=`eval ${command}`
 
         # table が存在しなければ作成する
         if [ "_${table_exists}" = "_" ]; then

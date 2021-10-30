@@ -7,7 +7,7 @@ dataset_id=$1
 wf_type=$2
 
 query_path="bigquery"
-query_name="table_query.sql"
+query_name="table_config.yml"
 
 schedule_daily_json=`yaml_to_json < schedule/daily.yml`
 dataset_tables=$(echo ${schedule_daily_json} | jq .${dataset_id})
