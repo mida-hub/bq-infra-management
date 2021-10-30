@@ -1,0 +1,14 @@
+name: Slack notification test
+on: push
+jobs:
+  slack-notify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Fail job
+        run: exit 1
+      - name: Slack notification
+        if: failure()
+        uses: rtCamp/action-slack-notify@v2
+        env:
+          SLACK_COLOR: danger
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
