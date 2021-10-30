@@ -31,7 +31,7 @@ file_not_exists_then_error ${table_schema_json}
 # Table / View 作成
 case ${table_type} in
     TABLE)
-        command=`echo "bq ls ${dataset_id} | grep -o '[[:blank:]]${table_id}[[:blank:]]'"`
+        command=`echo "bq ls ${dataset_id} | grep -o '\<${table_id}\>'"`
         echo ${command}
         table_exists=`eval ${command}`
 
