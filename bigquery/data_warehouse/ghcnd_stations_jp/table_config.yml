@@ -1,4 +1,4 @@
-version: 0
+version: 1
 description: 日本の観測地点マスタ
 type: VIEW
 time_partitioning_type:
