@@ -1,0 +1,6 @@
+data_lake:
+  - ghcnd_jp_2021
+  - ghcnd_stations_jp
+
+data_warehouse:
+  - ghcnd_jp

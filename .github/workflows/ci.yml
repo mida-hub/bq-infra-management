@@ -49,3 +49,17 @@ jobs:
           for file in ${{ env.MATCHED_FILES }} ; do
             bash script/make_table.sh $file
           done
+
+      - name: Run Query
+        if: contains(${{ env.MATCHED_FILES }}, ${{ env.MAKE_TABLE_KEY }})
+        run: |
+          for file in ${{ env.MATCHED_FILES }} ; do
+            bash script/run_query.sh $file
+          done          
+
+      - name: Slack notification
+        if: failure()
+        uses: rtCamp/action-slack-notify@v2
+        env:
+          SLACK_COLOR: danger
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}

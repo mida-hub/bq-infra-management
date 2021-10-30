@@ -14,7 +14,7 @@ DataLakeには、Cloud SQLからFederationでBigQueryにデータを持ってく
   - push時に差分のファイルを検知して処理を実行する
   - 手動実行ができる
   - 失敗時にSlackに通知する
-- Workflow
+- Schedule
   - 依存関係をもとにSQLを実行する
 - DDL
   - Create Dataset / Create Tableを発行する
@@ -36,11 +36,13 @@ DataLakeには、Cloud SQLからFederationでBigQueryにデータを持ってく
       - table_config.yml
       - table_schema.json
       - table_query.sql
+      - table_query_where.sql
       - table_view.sql
+- schedule
+  - daily.yml
 - script
 
 ## 残タスク
-- daily
 - error
 
 ## 参考
@@ -49,3 +51,5 @@ DataLakeには、Cloud SQLからFederationでBigQueryにデータを持ってく
 - BigQueryで一般公開データセット(気象データ)を使用してみよう : https://techblog.gmo-ap.jp/2020/05/12/weatherbigdata/
 - [小ネタ] シェルスクリプト内で YAML -> JSON 変換する #ruby : https://dev.classmethod.jp/articles/201904_yaml-to-json-converter-on-shellscript/
 - sed でエスケープ処理をしないでURLの置換を行う : https://hacknote.jp/archives/8163/
+- 【Mac】grepとsedで単語として完全一致を行う正規表現 : https://zenn.dev/t_o_d/articles/c97b1c9f522b7307ff9f
+- Slack Notify - GitHub Action : https://github.com/rtCamp/action-slack-notify
